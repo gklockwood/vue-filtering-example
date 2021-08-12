@@ -16,64 +16,63 @@
 
 <script>
     // import Post from "./components/Post";
-    // import {
-    //     ref,
-    //     reactive
-    // } from 'vue';
+    import {
+        ref,
+        reactive,
+        computed
+    } from 'vue';
     export default {
         name: "App",
         // components: {
         //     SortedList
         // },
 
-        // setup() {
-        //     const search = ref('');
-        //     const posts = reactive([{
-        //         id: 1,
-        //         title: "Post 1",
-        //         body: "Vue.js is cool"
-        //     }, {
-        //         id: 2,
-        //         title: "Post 2",
-        //         body: "Javascript is cool"
-        //     }]);
+        setup() {
+            const search = ref('');
+            const posts = reactive([{
+                id: 1,
+                title: "Post 1",
+                body: "Vue.js is cool"
+            }, {
+                id: 2,
+                title: "Post 2",
+                body: "Javascript is cool"
+            }]);
 
-        //     const filteredPosts = computed(function() {
-        //         return posts.value.filter(post => post.body.toLowerCase().includes(search.value.toLowerCase()), );
-        //     })
-
-
-
-        //     return {
-        //         search,
-        //         posts,
-        //         filteredPosts
-        //     }
-        // }
+            const filteredPosts = computed(function() {
+                return posts.filter(post => post.body.toLowerCase().includes(search.value.toLowerCase()), );
+            })
 
 
 
-        data() {
             return {
-                search: "",
-                posts: [{
-                    id: 1,
-                    title: "Post 1",
-                    body: "Vue.js is cool"
-                }, {
-                    id: 2,
-                    title: "Post 2",
-                    body: "Javascript is cool"
-                }]
-            };
-        },
-        computed: {
-            filteredPosts() {
-                // filter is a built in method
-                // Includes is a built in method
-                return this.posts.filter(post => post.body.toLowerCase().includes(this.search.toLowerCase()));
+                search,
+                posts,
+                filteredPosts
             }
         }
+
+        // data() {
+        //     return {
+        //         search: "",
+        //         posts: [{
+        //             id: 1,
+        //             title: "Post 1",
+        //             body: "Vue.js is cool"
+        //         }, {
+        //             id: 2,
+        //             title: "Post 2",
+        //             body: "Javascript is cool"
+        //         }]
+        //     };
+        // },
+        // computed: {
+        //     filteredPosts() {
+        //         // "filter" is a built in method
+        //         // "Includes" is a built in method
+        //         return this.posts.filter(post => post.body.toLowerCase().includes(this.search.toLowerCase()));
+        //     }
+        // }
     };
 </script>
 
