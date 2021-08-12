@@ -1,11 +1,13 @@
 <template>
     <h3>Filter By Category</h3> 
     <input type="text" v-model="name" placeholder="Filter By Name"/>
+    
     <select v-model="category">
-        <option valeu="Accessories">Accessories</option>
-        <option valeu="Laptop">Laptop</option>
-        <option valeu="Stationary">Stationary</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Laptop">Laptop</option>
+        <option value="Stationary">Stationary</option>value
     </select> 
+
     <ul>
         <li v-for="product in filterProductsByCategory" :key="product">Product Name : {{product.name}} - Price : {{product.price}} ({{product.category}})</li>
     </ul>
