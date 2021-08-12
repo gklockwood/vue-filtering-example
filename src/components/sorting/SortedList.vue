@@ -1,5 +1,6 @@
 <template>
     <h3>Filter By Category</h3> 
+    <input type="text" v-model="name" placeholder="Filter By Name"/>
     <select v-model="category">
         <option valeu="Accessories">Accessories</option>
         <option valeu="Laptop">Laptop</option>
@@ -8,6 +9,10 @@
     <ul>
         <li v-for="product in filterProductsByCategory" :key="product">Product Name : {{product.name}} - Price : {{product.price}} ({{product.category}})</li>
     </ul>
+    <ul>
+        <li v-for="product in filterProductsByName" :key="product">Product Name : {{product.name}} - Price : {{product.price}} ({{product.category}})</li>
+    </ul>
+    
 </template>
 
 <script>
@@ -59,17 +64,27 @@
                 price: 5,
                 category: 'Stationary'
             }]);
-            const category = ref('');
 
+
+            const category = ref('');
             const filterProductsByCategory = computed(function() {
                 return products.filter(product => !product.category.indexOf(category.value))
             })
 
 
+            const name = ref('');
+            const filterProductsByName = computed(function() {
+                return products.filter(product => !product.name.toLowerCase().indexOf(name.value.toLowerCase()))
+            })
+
+
+
             return {
                 products,
+                name,
                 category,
-                filterProductsByCategory
+                filterProductsByCategory,
+                filterProductsByName
             }
         }
     };
